@@ -1,0 +1,68 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: segoe UI;
+}
+.bg-all{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: #f2f2f2;
+	z-index: 9999999999999;
+	left: 0px;
+	top: 0px;
+	transition-property: all;
+	transition-duration: 0.9s;
+}
+.dlm-bg{
+	width: 400px;
+	height: auto;
+	padding: 20px;
+	background-color: #fff;
+	margin: 50px auto;
+	border:  1px solid #999;
+}
+.dlm-bg .title{
+	color: #555;
+	font-weight: 100;
+	margin: 0px 0px 5px 0px;
+	font-size: 35px;
+}
+.dlm-bg p{
+	color: #555555;
+}
+.dlm-bg input[type=text],.dlm-bg input[type=password]{
+	width: 97%;
+	height: 25px;
+	color: #777;
+	padding: 5px;
+	border: 1px solid #777;
+}
+.icon-user{
+	background-image: url('../img/user2.svg');
+	background-size: 26px;
+	background-position: 4px 4px;
+	background-repeat: no-repeat;
+	text-indent: 30px;	
+}
+.icon-pass{
+	background-image: url('../img/key.svg');
+	background-size: 25px;
+	background-position: 6px 5px;
+	background-repeat: no-repeat;
+	text-indent: 35px;	
+}
+.dlm-bg button{
+	width:100px;
+	padding: 8px 0px;
+	color: #fff;
+	border: 1px;
+	margin-top: 10px;
+	cursor: pointer;
+	background-color: #3f3a3a;
+	-webkit-transition:all 0.5s;
+}
+.dlm-bg button:hover{
+	background-color: #564c4c;
+	-webkit-transition:all 0.5s;
+}

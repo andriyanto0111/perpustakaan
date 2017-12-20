@@ -1,0 +1,74 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: segoe ui;
+}
+body{
+	background-image: url('../img/Melk_-_Abbey_-_Library.jpg');
+	background-size: 1366px 668px;
+	width: 1366px;
+	height: 100%;
+}
+.body{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0,0,0,0.5);
+}
+.body h1{
+	color: #fff;
+	font-size: 53px;
+	margin: 230px auto auto 100px;
+	font-family: arial;
+	font-weight: 100;
+}
+.body h2{
+	color:#fff;
+	font-size: 30px;
+	font-weight: 100;
+	margin: auto auto auto 350px;
+}
+.kotak{
+	width: 400px;
+	height: auto;
+	padding: 0px 15px 10px 15px; 
+	border: 1px solid #c4b4b4;
+	background-color: rgba(124, 106, 106, 0.8);
+	float: right;
+	border-radius: 5px;
+	margin: -180px  20px;
+}
+.kotak h1{
+	color: #fff;
+	font-size: 40px;
+	padding: 8px 0px ;
+	margin: 0px 0px 20px 0px;
+	border-bottom: 1px solid #fff;
+	font-weight: 100;
+}
+.kotak p{
+	color:#fff;
+}
+.kotak span{
+	font-style: italic;
+}
+input[type=text],input[type=password]{
+	width: 100%;
+	margin: 9px 0px;
+	height: 40px;
+	color: #666;
+	font-size: 15px;
+	border-radius:3px;
+	text-indent: 5px;
+	border: 1px;
+}
+#login{
+	padding: 5px 0px;
+	width: 100px;
+	margin:10px 0px 0px 0px;
+	color: #fff;
+	background-color: #4955d8;
+	border:1px solid #5762e0;
+	font-size: 15px;
+	cursor: pointer;
+}
