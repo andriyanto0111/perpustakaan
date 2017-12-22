@@ -1,1 +1,1 @@
-# hanya berjalan di php 5
+Hanya berjalan di PHP 5
