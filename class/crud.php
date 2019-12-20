@@ -1,11 +1,13 @@
-<?php 
+<?php
 	class proses{
 		function __construct(){
+			date_default_timezone_set("Asia/Jakarta");
 			$server = "localhost";
-			$user	= "root";
-			$pass	= "";
+			$user	= "admin";
+			$pass	= "admin";
 			$db		= "db_perpustakaan";
 			$this->con = new PDO("mysql:host=$server;dbname=$db",$user,$pass);
+			$this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 		function simpan($tabel,$val){
 			$qw = "INSERT INTO $tabel VALUES ($val)";
@@ -22,10 +24,24 @@
 		function tampil($select,$tabel,$property){
 			$qw	= "SELECT $select FROM $tabel $property";
 			$tam	= $this->con->query($qw);
-			return $tam; 
+			return $tam;
+		}
+		function getKodePinjam()
+		{
+			$sql = "SELECT MAX(id_pinjam) as kode FROM detail_pinjam";
+			$ex	= $this->con->query($sql);
+			$dt = $ex->fetch();
+			$kode = $dt['kode'];
+
+			$nu = (int) substr($kode, 3,4);
+			$nu++;
+
+			$char = "PNJ";
+			$newid = $char . sprintf("%04s",$nu);
+			return $newid;
 		}
 	}
-	class input{
+	class inputClass{
 		function input($type=null,$nama=null,$val=null,$property=null){
 			$input = "<input type='$type' name='$nama' value='$val' $property>";
 			return $input;
@@ -74,10 +90,9 @@
 			}
 		}
 		function base_url($folder){
-			$url = "http://localhost:81/perpustakaan".$folder;
+			$url = "http://localhost:8080/perpustakaan".$folder;
 			echo $url;
 		}
 	}
 	$proses = new proses;
-	$form = new input;
- ?>
+	$form = new inputClass;

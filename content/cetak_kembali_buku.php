@@ -1,11 +1,11 @@
-<?php 
+<?php
 	include '../class/crud.php';
  ?>
  <title>Laporan Peminjaman Buku </title>
 
 <div class="header">
 	<h1>Laporan Pengembalian Buku</h1>
-	<h2>Perpustakaan SMK Wikrama 1 Jepara</h2> 	
+	<h2>Perpustakaan SMK Wikrama 1 Jepara</h2>
 </div>
 
  <table class="tb_isi" cellspacing="0" border="1">
@@ -19,7 +19,7 @@
  		<th>Denda</th>
  	</tr>
  	<?php
- 		$sql = $proses->tampil("*","detail_pinjam,anggota,buku,pengembalian,peminjaman","WHERE pengembalian.tgl_kembali BETWEEN '$_GET[tgl1]' AND '$_GET[tgl2]' AND pengembalian.id_pinjam = detail_pinjam.id_pinjam AND peminjaman.id_anggota = pengembalian.id_anggota AND pengembalian.id_anggota = anggota.id_anggota AND buku.id_buku = detail_pinjam.id_buku AND detail_pinjam.status = 'kembali' ");
+ 		$sql = $proses->tampil("anggota.nama,pengembalian.*,buku.judul,detail_pinjam.tgl_pinjam,detail_pinjam.lama_pinjam,detail_pinjam.denda","pengembalian","INNER JOIN detail_pinjam ON pengembalian.id_pinjam=detail_pinjam.id_pinjam INNER JOIN buku ON detail_pinjam.id_buku = buku.id_buku INNER JOIN anggota ON pengembalian.id_anggota=anggota.id_anggota WHERE pengembalian.tgl_kembali BETWEEN '$_GET[tgl1]' AND '$_GET[tgl2]' AND detail_pinjam.status = 'kembali' ");
  		$no = 1;
 		foreach ($sql as $data) {
  	 ?>
@@ -27,16 +27,16 @@
  		<td><?php echo $no++."."; ?></td>
  	 	<td><?php echo $data['nama']; ?></td>
  	 	<td><?php echo $data['judul']; ?></td>
- 	 	<td><?php echo date('d F Y', strtotime($data[4])); ?></td>
- 	 	<td><?php echo date('d F Y', strtotime($data[23])); ?></td>
+ 	 	<td><?php echo date('d F Y', strtotime($data['tgl_pinjam'])); ?></td>
+ 	 	<td><?php echo date('d F Y', strtotime($data['tgl_kembali'])); ?></td>
  	 	<td><?php echo $data['lama_pinjam']; ?></td>
  	 	<td>Rp. <?php echo number_format($data['denda'],2,",",".");?></td>
  	</tr>
  <?php } ?>
  </table>
  <table class="tb_isi" border="1" cellspacing="0" style="border-top: 0px;">
- <?php 
- 	$qr = $proses->tampil("SUM(detail_pinjam.denda)","detail_pinjam,anggota,buku,pengembalian,peminjaman","WHERE pengembalian.tgl_kembali BETWEEN '$_GET[tgl1]' AND '$_GET[tgl2]' AND pengembalian.id_pinjam = detail_pinjam.id_pinjam AND peminjaman.id_anggota = pengembalian.id_anggota AND pengembalian.id_anggota = anggota.id_anggota AND buku.id_buku = detail_pinjam.id_buku AND detail_pinjam.status = 'kembali' ");
+ <?php
+ 	$qr = $proses->tampil("SUM(detail_pinjam.denda)","pengembalian","INNER JOIN detail_pinjam ON pengembalian.id_pinjam=detail_pinjam.id_pinjam INNER JOIN buku ON detail_pinjam.id_buku = buku.id_buku INNER JOIN anggota ON pengembalian.id_anggota=anggota.id_anggota WHERE pengembalian.tgl_kembali BETWEEN '$_GET[tgl1]' AND '$_GET[tgl2]' AND detail_pinjam.status = 'kembali' ");
  	$jml = $qr->fetch();
   ?>
  	<tr>

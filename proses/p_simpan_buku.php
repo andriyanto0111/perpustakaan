@@ -1,7 +1,7 @@
-<?php 
+<?php
 	include "../class/crud.php";
 	$simpan = $proses->simpan("buku","
-			'',
+			NULL,
 			'$_POST[judul_buku]',
 			'$_POST[penerbit_buku]',
 			'$_POST[thn_terbit_buku]',

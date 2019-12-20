@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include '../class/crud.php';
  ?>
  <table class="table1" cellspacing="0" >

@@ -1,9 +1,9 @@
-<?php 
+<?php
 	include "../class/crud.php";
 	$no = 1;
-	$qr = $proses->tampil("*","detail_pinjam","WHERE id_pinjam = '$_GET[id]'");
+	$qr = $proses->tampil("detail_pinjam.*,anggota.nama","detail_pinjam","INNER JOIN peminjaman ON detail_pinjam.id_pinjam = peminjaman.id_pinjam INNER JOIN anggota ON peminjaman.id_anggota = anggota.id_anggota WHERE detail_pinjam.id_pinjam = '$_GET[id]'");
 	$dt = $qr->fetch();
- ?> 
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <body>
  	<div class="content">
  		<h1>daftar buku yang di pinjam </h1>
-	 	<p style="margin: 20px 0px -15px 0px;">ID Pinjam <?php echo $dt['id_pinjam']; ?></p> 
+	 	<p style="margin: 20px 0px -15px 0px;"><b>ID Pinjam : <?php echo $dt['id_pinjam']; ?> || Nama Peminjam : <?php echo $dt['nama']; ?></b></p>
 	 	<table class="table-detail" cellspacing="0px" >
 		 	<tr>
 		 		<th>No.</th>
@@ -100,7 +100,7 @@
 	}
 	.content .table-detail td{
 		border-bottom: 1px solid #888;
-		height: 30px;	
+		height: 30px;
 	}
 	.content .table-detail tr:hover{
 		background-color: #eeeeee;

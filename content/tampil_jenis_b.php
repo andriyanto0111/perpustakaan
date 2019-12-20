@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include "../class/crud.php";
  ?>
  <h1>Data Jenis Buku</h1>
@@ -10,7 +10,7 @@
  		<td>
  			<input type="text" id="key" onkeypress="cari_enter_jenis(event)">
  		</td>
- 		<td><button id="btn_cari" onkeyup="cari_jenis()">Cari</button></td>
+ 		<td><button id="btn_cari" onClick="cari_jenis()">Cari</button></td>
  	</tr>
  </table>
 

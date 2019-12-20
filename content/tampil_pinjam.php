@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include "../class/crud.php";
  ?>
  <h1>Data Peminjaman Buku</h1>
@@ -22,25 +22,25 @@
  			<th>Tanggal Transaksi</th>
  			<th>Total Pinjam</th>
  			<th>ID Anggota</th>
+			<th>Nama</th>
  			<th>Action</th>
 	</tr>
 	<?php
-		$tamp = $proses->tampil("*",
+		$tamp = $proses->tampil("peminjaman.*,nama",
 
  								"peminjaman",
 
-								"");
-	
+								"INNER JOIN anggota ON peminjaman.id_anggota = anggota.id_anggota");
+
 		$no=1;
-		foreach ($tamp as $data) {
-			
-	 ?>
+		foreach ($tamp as $data) {?>
 	 <tr>
 	 	<td><?php echo $no++."."; ?></td>
 	 	<td><?php echo $data[0]; ?></td>
 	 	<td><?php echo $data[1]; ?></td>
 	 	<td><?php echo $data[2]; ?></td>
 	 	<td><?php echo $data[3]; ?></td>
+		<td><?php echo $data['nama']; ?></td>
 	 	<td width="180px">
 
 	 		<div class="hapus" onclick="hapus_pinjam('<?php echo $data['id_pinjam']; ?>')"><p>Hapus</p></div>
@@ -50,7 +50,7 @@
 	 				Detail
 	 			</button>
 	 		</a>
-	 		
+
 	 		<div class="tmb_pinjam" onclick="tmb_pinjam('<?php echo $data['id_pinjam']; ?>','<?php echo $data['id_anggota']; ?>')"><p>+</p></div>
 	 	</td>
 	 </tr>

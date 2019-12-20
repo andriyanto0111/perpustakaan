@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include "../class/crud.php";
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -25,22 +25,22 @@
  	<h3 onclick="thickbox('','tutup')">X</h3>
 
  	<p>ID Anggota</p>
- 	<input type="text" id="id_anggota" value="<?php echo $data[0]; ?>" onclick="validation('id_anggota')" onchange="validation('id_anggota')" onkeyup="validation('id_anggota')">
+ 	<input type="text" id="id_anggota" value="<?php echo !$data ? "" : $data[0]; ?>" onclick="validation('id_anggota')" onchange="validation('id_anggota')" onkeyup="validation('id_anggota')">
 
  	<p>Nama Anggota</p>
- 	<input type="text" id="nama_anggota" value="<?php echo $data[1]; ?>" onclick="validation('nama_anggota')" onchange="validation('nama_anggota')" onkeyup="validation('nama_anggota')">
+ 	<input type="text" id="nama_anggota" value="<?php echo !$data ? "" : $data[1]; ?>" onclick="validation('nama_anggota')" onchange="validation('nama_anggota')" onkeyup="validation('nama_anggota')">
 
  	<p>Alamat</p>
- 	<textarea id="alamat" onclick="validation('alamat')" onchange="validation('alamat')" onkeyup="validation('alamat')" class="ta-alamat"><?php echo $data[2]; ?></textarea>
+ 	<textarea id="alamat" onclick="validation('alamat')" onchange="validation('alamat')" onkeyup="validation('alamat')" class="ta-alamat"><?php echo !$data ? "" : $data[2]; ?></textarea>
 
  	<p>No Telephone</p>
- 	<input type="text" id="no_telephon" value="<?php echo $data[3]; ?>" onclick="validation('no_telephon')" onchange="validation('no_telephon')" onkeyup="validation('no_telephon')">
+ 	<input type="text" id="no_telephon" value="<?php echo !$data ? "" : $data[3]; ?>" onclick="validation('no_telephon')" onchange="validation('no_telephon')" onkeyup="validation('no_telephon')">
 
  	<p>Tanggal Mendaftar</p>
- 	<input type="text" name="tgl_daftar" id="tgl_daftar" value="<?php echo $data[4], $date; ?>" onclick="validation('tgl_daftar')" onchange="validation('tgl_daftar')" onkeyup="validation('tgl_daftar')" readonly>
+ 	<input type="text" name="tgl_daftar" id="tgl_daftar" value="<?php echo !$data ? "" : $data[4], $date; ?>" onclick="validation('tgl_daftar')" onchange="validation('tgl_daftar')" onkeyup="validation('tgl_daftar')" readonly>
 
  	<p>Tanggal Kadaluarsa</p>
- 	<input type="text" name="tgl_expired" id="tgl_expired" value="<?php echo $data[5], $sls; ?>" onclick="validation('tgl_expired')" onchange="validation('tgl_expired')" onkeyup="validation('tgl_expired')">
+ 	<input type="text" name="tgl_expired" id="tgl_expired" value="<?php echo !$data ? "" : $data[5], $sls; ?>" onclick="validation('tgl_expired')" onchange="validation('tgl_expired')" onkeyup="validation('tgl_expired')">
 
  	<button class="btn-simpan" onclick="<?php echo $onclick; ?>" > <?php echo $button; ?>  </button>
 </div>

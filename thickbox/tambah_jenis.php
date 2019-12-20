@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include "../class/crud.php";
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -19,10 +19,10 @@
  	<h3 onclick="thickbox('','tutup')">X</h3>
 
  	<p>Nama Jenis Buku</p>
- 	<input type="text" id="nama_jenis" value="<?php echo $data[1]; ?>" onclick="validation('nama_jenis')" onchange="validation('nama_jenis')" onkeyup="validation('nama_jenis')">
+ 	<input type="text" id="nama_jenis" value="<?php echo !$data ? "" : $data[1]; ?>" onclick="validation('nama_jenis')" onchange="validation('nama_jenis')" onkeyup="validation('nama_jenis')">
 
  	<p>No Rak Buku</p>
- 	<input type="text" id="keterangan" value="<?php echo $data[2]; ?>" onclick="validation('keterangan')" onchange="validation('keterangan')" onkeyup="validation('keterangan')">
+ 	<input type="text" id="keterangan" value="<?php echo !$data ? "" : $data[2]; ?>" onclick="validation('keterangan')" onchange="validation('keterangan')" onkeyup="validation('keterangan')">
 
  	<button class="btn-simpan" onclick="<?php echo $onclick; ?>" > <?php echo $button; ?>  </button>
  </div>

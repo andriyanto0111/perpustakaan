@@ -1,9 +1,9 @@
-<?php 
+<?php
 	include "../class/crud.php";
 	$status = "kembali";
 	$sqlp = $proses->tampil("*","pengembalian","WHERE id_pinjam = '$_POST[id_pinjam]' ");
 	$d = $sqlp->fetch();
-	$jml_denda = $d['jumlah_denda']+$_POST['jumlah_denda'];
+	$jml_denda = @$d['jumlah_denda']+$_POST['jumlah_denda'];
 	$rowp = $sqlp->rowCount();
 
 	$qr = $proses->tampil("*","detail_pinjam","WHERE id_pinjam = '$_POST[id_pinjam]' AND status = 'pinjam'");
@@ -39,7 +39,7 @@
 									denda = '$_POST[denda]'","
 									id_detail_pinjam = '$_POST[id_detail_pinjam]'");
 			$kembalikan = $proses->simpan("pengembalian","
-									'',
+									NULL,
 									'$_POST[tgl_kembali]',
 									'$_POST[denda]',
 									'$_POST[id_anggota]',
@@ -52,7 +52,7 @@
 										denda = '$_POST[denda]'","
 										id_detail_pinjam = '$_POST[id_detail_pinjam]'");
 			$kembalikan = $proses->simpan("pengembalian","
-										'',
+										NULL,
 										'$_POST[tgl_kembali]',
 										'$_POST[denda]',
 										'$_POST[id_anggota]',
@@ -60,4 +60,3 @@
 			echo "berhasil";
 		}
 	}
- ?>

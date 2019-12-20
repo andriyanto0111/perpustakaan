@@ -1,18 +1,6 @@
 <?php
 	include '../class/crud.php';
-	mysql_connect("localhost","root","");
-	mysql_select_db("db_perpustakaan");
-
-	$sql = mysql_query("SELECT MAX(id_pinjam) as kode FROM detail_pinjam")or die(mysql_error());
-	$dt = mysql_fetch_array($sql);
-	$kode = $dt['kode'];
-
-	$nu = (int) substr($kode, 3,4);
-	$nu++;
-
-	$char = "PNJ";
-	$newid = $char . sprintf("%04s",$nu);
-
+	$newid = $proses->getKodePinjam();
 	$date = date('Y-m-d');
 	$selisih = date('Y-m-d',strtotime('+7 day'));
 
@@ -71,7 +59,7 @@
 
  	<!-- Table Detail!-->
  	<div class="table_detail">
-		 		
+
  	</div>
  	<!-- Table Detail!-->
 

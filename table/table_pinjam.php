@@ -1,18 +1,6 @@
-<?php 
+<?php
 	include "../class/crud.php";
-
-	mysql_connect("localhost","root","");
-	mysql_select_db("db_perpustakaan");
-
-	$sql = mysql_query("SELECT MAX(id_pinjam) as kode FROM detail_pinjam")or die(mysql_error());
-	$dt = mysql_fetch_array($sql);
-	$kode = $dt['kode'];
-
-	$nu = (int) substr($kode, 3,4);
-	$nu++;
-
-	$char = "PNJ";
-	$newid = $char . sprintf("%04s",$nu);
+	$newid = $proses->getKodePinjam();
 
 	if (isset($_GET['id_pinjam'])) {
 		$id = $_GET['id_pinjam'];
@@ -44,7 +32,7 @@
  								"buku,detail_pinjam",
 
  								"WHERE detail_pinjam.id_pinjam = '$id' AND buku.id_buku = detail_pinjam.id_buku AND detail_pinjam.status = 'pinjam'");
-		$row = $sql->rowCount(); 
+		$row = $sql->rowCount();
 		foreach ($sql as $data) {
 	?>
 	<tr>
@@ -60,7 +48,7 @@
 	</tr>
 	<?php } ?>
 </table>
-	
+
  	<p>Total Pinjam</p>
  	<input type="text" id="total_pinjam" value="<?php echo $row; ?>" readonly><br>
 
